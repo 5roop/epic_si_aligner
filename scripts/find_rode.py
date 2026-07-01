@@ -6,14 +6,14 @@ from loguru import logger as đ
 try:
     m1 = snakemake.input.m1
     m2 = snakemake.input.m2
-    synch = "data/final/PILOT/synch.txt"
+    synch = snakemake.input.synch
     out = snakemake.output[0]
 except NameError:
     đ.warning("Running outside snakemake")
-    m1 = "data/final/PILOT/1.stereo.wav"
-    m2 = "data/final/PILOT/2.stereo.wav"
-    synch = "data/final/PILOT/synch.txt"
-    out = "data/final/PILOT/rode.txt"
+    m1 = "data/final/EP002/1.stereo.wav"
+    m2 = "data/final/EP002/2.stereo.wav"
+    synch = "data/final/EP002/synch.txt"
+    out = "data/final/EP002/rode.txt"
 
 from pathlib import Path
 
@@ -32,7 +32,7 @@ if synch > 0:
     audio2 = audio2[int(synch * sr1) :]
 else:
     # Trim first file
-    audio1 = audio1[int(synch * sr1) :]
+    audio1 = audio1[int(abs(synch) * sr1) :]
 
 minlen = min(audio1.shape[0], audio2.shape[0])
 skip_beginning_idx = 2 * 60 * sr1  # Skip first 2 mins
