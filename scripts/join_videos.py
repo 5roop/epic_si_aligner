@@ -11,7 +11,7 @@ except NameError:
     outpath = "data/final/PILOT/video.MP4"
     rodepath = "data/final/PILOT/rode.txt"
 from pathlib import Path
-from subprocess import call
+from subprocess import run
 from loguru import logger as đ
 
 delay = float(Path(synch).read_text())
@@ -44,10 +44,12 @@ elif audio_source == "1":
 else:
     raise AttributeError(f"Got illegal audio source: {audio_source}")
 
-# đ.warning("Doing a sample only!")
-call(
+run(
     [
         "ffmpeg",
+        "-loglevel",
+        "error",
+        "-stats",
         "-ss",
         str(trim_time),
         "-i",
@@ -57,14 +59,14 @@ call(
         # "-t",
         # "60",
         "-filter_complex",
-        "[0:v][1:v]hstack=inputs=2"
-        ",scale=1080:-2,fps=24"  # Uncomment for lower resolution
-        "[v]",
+        "[0:v][1:v]hstack=inputs=2,scale=1080:-2,fps=25[v]",
         "-map",
         "[v]",
         "-map",
         audio_filter,
         "-y",
         outpath,
-    ]
+    ],
+    check=True,
+    capture_output=False,
 )

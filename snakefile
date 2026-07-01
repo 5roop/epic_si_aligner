@@ -14,8 +14,8 @@ rule extract_audio:
         mono_lowres = "data/final/{what}/{num}.mono.wav",
         stereo_midres = "data/final/{what}/{num}.stereo.wav",
     shell: """
-    ffmpeg -i {input} -ac 2 -ar 16000 -y {output.stereo_midres} &
-    ffmpeg -i {input} -ac 1 -ar 2000 -y {output.mono_lowres} &
+    ffmpeg -loglevel error -stats -i {input} -ac 2 -ar 16000 -y {output.stereo_midres} &
+    ffmpeg -loglevel error -stats -i {input} -ac 1 -ar 2000 -y {output.mono_lowres} &
     wait
     """
 
@@ -50,7 +50,7 @@ rule join_videos:
 rule get_audio_from_video:
     input: "data/final/{what}/video.MP4"
     output: "data/final/{what}/audio.wav"
-    shell: "ffmpeg -i {input} -y {output}"
+    shell: "ffmpeg -loglevel error -stats -i {input} -y {output}"
 
 
 

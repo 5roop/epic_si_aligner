@@ -11,7 +11,6 @@ from pathlib import Path
 from scipy import signal
 import soundfile as sf
 import numpy as np
-import matplotlib.pyplot as plt
 from loguru import logger as đ
 
 sig1, sr1 = sf.read(wav1)

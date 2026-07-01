@@ -49,8 +49,8 @@ def calculate_envelope(audio, window_size=100):
     b = np.ones(window_size) / window_size
     envelope = np.zeros((audio.shape[0], 2))
     for channel in range(2):
-        squared_abs_signal = np.abs(audio[:, channel])
-        envelope[:, channel] = signal.lfilter(b, 1.0, squared_abs_signal)
+        abs_signal = np.abs(audio[:, channel])
+        envelope[:, channel] = signal.lfilter(b, 1.0, abs_signal)
     return envelope
 
 
@@ -72,19 +72,4 @@ else:
     result = "2"
 
 đ.info(f"Found RODE mics on camera {result}.")
-
-# import matplotlib.pyplot as plt
-# import matplotlib
-
-# matplotlib.use("qtagg")
-# plt.plot(envelope1[:, 0], label="1, left")
-# plt.plot(envelope1[:, 1], label="1, right")
-# plt.plot(envelope2[:, 0], label="2, left")
-# plt.plot(envelope2[:, 1], label="2, right")
-
-
-# plt.legend()
-# plt.show()
-
-
 Path(out).write_text(result)

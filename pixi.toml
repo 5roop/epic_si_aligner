@@ -6,7 +6,7 @@ platforms = ["linux-64"]
 version = "0.1.0"
 
 [tasks]
-run = "snakemake -j 1"
+run = "snakemake -j 1 --rerun-incomplete"
 dry = "snakemake -j 1 -n"
 rulegraph = "snakemake --rulegraph | dot -Tpdf > rulegraph.pdf"
 dag = "snakemake --dag | dot -Tpdf > dag.pdf"
