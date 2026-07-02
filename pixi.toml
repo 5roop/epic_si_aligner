@@ -29,5 +29,4 @@ lxml = ">=6.1.1,<7"
 [pypi-dependencies]
 soundfile = ">=0.14.0,<0.15"
 snakemake = ">=9.0.0,<10"
-exbee = { git = "https://github.com/5roop/exbee.git", subdirectory = "exbee", rev = "6991ff7" }
-
+exbee = { git = "https://github.com/5roop/exbee.git", subdirectory = "exbee", rev = "e89e2b1" }

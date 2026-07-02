@@ -82,12 +82,12 @@ for speaker in table:
         tier = etree.Element(
             "tier", id=f"TIE{tier_counter}", speaker=speaker.id, category=cat, type=type
         )
-        tier.set("display-name", f"{speaker.abbrev} [{type}]")
+        tier.set("display-name", f"{speaker.abbrev} [{cat}]")
         tier_counter += 1
         doc.doc.find(".//basic-body").append(tier)
 for cat, type in [("a", "d"), ("c", "d")]:
     tier = etree.Element("tier", id=f"TIE{tier_counter}", category=cat, type=type)
-    tier.set("display-name", f"[{type}]")
+    tier.set("display-name", f"[{cat}]")
     tier_counter += 1
     doc.doc.find(".//basic-body").append(tier)
 
