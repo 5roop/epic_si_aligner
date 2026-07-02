@@ -12,7 +12,7 @@ This pipeline does the following:
 
 ```
 data
-├── final -> output of the pipeline
+├── final            -> output of the pipeline
 │   ├── EP001
 │   │   ├── EP001.MP4
 │   │   ├── EP001.exb
@@ -23,18 +23,18 @@ data
 │       ├── EP002.exb
 │       ├── EP002.wav
 │       └── annotation_schema.xml
-├── input -> input data
-│   ├── EP001
-│   │   ├── CAM1
+├── input            -> input data
+│   ├── EP001        -> recording 1
+│   │   ├── CAM1     -> camera 1
 │   │   │   └── 1.MP4
-│   │   └── CAM2
+│   │   └── CAM2     -> camera 2
 │   │       └── 2.MP4
 │   └── EP002
 │       ├── CAM1
 │       │   └── 1.MP4
 │       └── CAM2
 │           └── 2.MP4
-└── templates -> frozen, don't alter
+└── templates        -> frozen, don't alter
     ├── annotation_schema.xml
     └── template.exb
 ```
