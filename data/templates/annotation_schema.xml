@@ -1,0 +1,107 @@
+<annotation-specification>
+    <annotation-set exmaralda-tier-category="v" name="Tier [v]">
+        <category name="nebesedna vokalizacija, dogodek" >
+            <category name="Smeh">
+                <tag name="((smeh)) " />
+                <description>Označuje smejanje.</description>
+            </category>
+            <category name="Jok">
+                <tag name="((jok)) " />
+                <description>Označuje jokanje.</description>
+            </category>
+            <category name="Kašelj">
+                <tag name="((kašelj)) " />
+                <description>Označuje kašelj.</description>
+            </category>
+            <category name="Kričanje">
+                <tag name="((krik)) " />
+                <description>Označuje kričanje.</description>
+            </category>
+            <category name="Stokanje">
+                <tag name="((stokanje)) " />
+                <description>Označuje kremženje.</description>
+            </category>
+            <category name="Tleskanje">
+                <tag name="((tleskanje)) " />
+                <description>Označuje tleskanje z jezikom.</description>
+            </category>
+            <category name="Žvižganje">
+                <tag name="((žvižganje)) " />
+                <description>Označuje žvižganje.</description>
+            </category>
+       </category>
+        <category name="Izgovor">
+            <category name="Nerazumljivo">
+                <tag name="((nerazumljivo)) " />
+                <description>Označuje besedo ali več besed, ki jih ne razumemo in ne moremo
+                    transkribirati.</description>
+            </category>
+            <category name="Negotova beseda">
+                <tag name="(beseda/druga) " />
+                <description>Če nismo gotovi, ali slišimo "beseda" ali "druga", uporabimo tako
+                    notacijo. Primer: (pridem/pol grem), (sploh)</description>
+            </category>
+            <category name="Nedokončana beseda">
+                <tag name="() " />
+                <description>Če govorec opusti izgovor besede, uporabimo tako notacijo.</description>
+            </category>
+            <category name="Polglasnik">
+                <tag name="@" />
+                <description>Označuje polglasnik, npr. v besedi "prvi": "p@rvi".</description>
+            </category>
+            <category name="Mehkonebni r">
+                <tag name="$r" />
+                <description>Označuje mehkonebni r.</description>
+            </category>
+            <category name="Mehki ž">
+                <tag name="$ž" />
+                <description>Označuje mehkonebni r.</description>
+            </category>
+            <category name="Mehki š">
+                <tag name="$š" />
+                <description>Označuje mehkonebni r.</description>
+            </category>
+           <category name="Mehki č">
+                <tag name="$č" />
+                <description>Označuje mehkonebni r.</description>
+            </category>
+            <category name="Zveneči h">
+                <tag name="$h" />
+                <description>Označuje zveneči h.</description>
+            </category>
+            <category name="Kratek premor">
+                <tag name="(.) " />
+                <description>Označuje kratek premor, do prbl. 0.2s.</description>
+            </category>
+            <category name="Vdih, izdih">
+                <tag name="(h) " />
+                <description>Označuje vzdih ali izdih.</description>
+            </category>
+        </category>
+    </annotation-set>
+    <annotation-set exmaralda-tier-category="g">
+        <category name="Geste">
+            <category name="Simbolna">
+                <tag name=" simbolna" />
+                <description>Označuje simbolno gesto, npr. palec gor za "dobro".
+                Opiši gesto v tier
+                    [nv].</description>
+            </category>
+            <category name="Posnemovalna">
+                <tag name=" posnemovalna" />
+                <description>Označuje posnemovalno gesto, npr. posnemanje
+                živali, opravil... Opiši gesto v tier [nv].</description>
+            </category>
+            <category name="Ritem">
+                <tag name=" ritem" />
+                <description>Označuje ritmično ponavljajoče geste, npr.
+                ploskanje. Opiši gesto v tier [nv]</description>
+            </category>
+            <category name="Deiktična">
+                <tag name=" deiktična" />
+                <description>Označuje deiktične geste, npr. kazanje s prstom ali
+                roko. Opiši gesto v tier [nv]</description>
+            </category>
+        </category>
+    </annotation-set>
+</annotation-specification>

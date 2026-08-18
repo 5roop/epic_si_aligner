@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<basic-transcription>
+    <head>
+        <meta-information>
+            <project-name>EPIC-SI</project-name>
+            <transcription-name>EP001</transcription-name>
+            <referenced-file url="EP001-09062026-01.mp4" />
+            <referenced-file url="EP001-09062026-01.wav" />
+            <ud-meta-information></ud-meta-information>
+            <comment></comment>
+            <transcription-convention>HIAT</transcription-convention>
+        </meta-information>
+        <speakertable>
+            <speaker id="SPK0">
+                <abbreviation>EP01001</abbreviation>
+                <sex value="m" />
+                <languages-used></languages-used>
+                <l1></l1>
+                <l2></l2>
+                <ud-speaker-information>
+</ud-speaker-information>
+                <comment></comment>
+            </speaker>
+            <speaker id="SPK1">
+                <abbreviation>EP03001</abbreviation>
+                <sex value="m" />
+                <languages-used></languages-used>
+                <l1></l1>
+                <l2></l2>
+                <ud-speaker-information>
+</ud-speaker-information>
+                <comment></comment>
+            </speaker>
+        </speakertable>
+    </head>
+    <basic-body>
+        <common-timeline>
+
+        </common-timeline>
+        <tier id="TIE0" speaker="SPK0" category="v" type="t" display-name="EP01001 [v]">
+           </tier>
+    </basic-body>
+</basic-transcription>
