@@ -39,7 +39,8 @@
             <category name="Negotova beseda">
                 <tag name="(beseda/druga) " />
                 <description>Če nismo gotovi, ali slišimo "beseda" ali "druga", uporabimo tako
-                    notacijo. Primer: (pridem/pol grem), (sploh)</description>
+                    notacijo. Označuje tudi negotovo besedo brez alternative.
+                    Primer: (pridem/pol grem), (sploh)</description>
             </category>
             <category name="Nedokončana beseda">
                 <tag name="() " />
