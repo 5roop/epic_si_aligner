@@ -1,3 +1,18 @@
+"""RUN with pixi run commands:
+
+    [tasks]
+    run = "snakemake -j 1 --rerun-incomplete"
+    dry = "snakemake -j 1 -n"
+    rulegraph = "snakemake --rulegraph | dot -Tpdf > rulegraph.pdf"
+    dag = "snakemake --dag | dot -Tpdf > dag.pdf"
+    clean = "rm -rf .pixi .snakemake data/final/"
+
+for instance:
+pixi run run
+
+"""
+
+
 # def temp(x):
 #     return x
 
