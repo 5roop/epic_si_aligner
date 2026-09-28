@@ -12,6 +12,7 @@ except NameError:
     rodepath = "data/final/PILOT/rode.txt"
 from pathlib import Path
 from subprocess import run
+
 from loguru import logger as đ
 
 delay = float(Path(synch).read_text())
@@ -33,14 +34,14 @@ Path(outpath).parent.mkdir(exist_ok=True, parents=True)
 đ.info(f"Will use camera {audio_source} for sound")
 if audio_source == "2":
     if delay < 0:
-        audio_filter = "1:a"  # video1 is untrimmed (2nd input)
+        audio_filter = "1:a"  # camera 2 is untrimmed -> 2nd input
     else:
-        audio_filter = "0:a"  # video1 is untrimmed (1st input)
+        audio_filter = "0:a"  # camera 2 is trimmed -> 1st input
 elif audio_source == "1":
     if delay < 0:
-        audio_filter = "0:a"  # video2 is trimmed (1st input)
+        audio_filter = "0:a"  # camera 1 is trimmed -> 1st input
     else:
-        audio_filter = "1:a"  # video2 is trimmed (2nd input)
+        audio_filter = "1:a"  # camera 1 is untrimmed -> 2nd input
 else:
     raise AttributeError(f"Got illegal audio source: {audio_source}")
 
@@ -51,19 +52,26 @@ run(
         "error",
         "-stats",
         "-ss",
-        str(trim_time),
+        str(trim_time),  # Trim the trimmed video so many seconds
         "-i",
-        trimmed,
+        trimmed,  # Path to trimmed video
         "-i",
-        untrimmed,
+        untrimmed,  # Path to untrimmed video
+        ## Debug: only first few seconds
         # "-t",
         # "60",
         "-filter_complex",
-        "[0:v][1:v]hstack=inputs=2,scale=1080:-2,fps=25[v]",
+        "[0:v][1:v]hstack=inputs=2,fps=25[v]",
         "-map",
         "[v]",
         "-map",
-        audio_filter,
+        audio_filter,  # From which video audio should be taken
+        "-c:v",
+        "libx264",
+        "-b:v",
+        "40M",
+        "-c:a",
+        "aac",
         "-y",
         outpath,
     ],

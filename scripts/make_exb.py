@@ -7,12 +7,14 @@ import datetime
 from collections import namedtuple
 from subprocess import run
 from shutil import copy
+import numpy as np
 
 try:
     audiopath = snakemake.input.audio
     videopath = snakemake.input.video
     template = snakemake.input.template
     inschema = snakemake.input.schema
+    timestamps = snakemake.input.timestamps
     outexb = snakemake.output.exb
     outschema = snakemake.output.schema
 
@@ -24,6 +26,7 @@ except NameError:
     inschema = "data/templates/annotation_schema.xml"
     outexb = "data/final/EP002/EP002.exb"
     outschema = "data/final/EP002/annotation_schema.xml"
+    timestamps = "brisi.txt.npy"
 
 name = Path(audiopath).with_suffix("").name
 
@@ -71,6 +74,12 @@ tli.set("time", "0.0")
 tli = etree.SubElement(ct, "tli")
 tli.set("id", "T1")
 tli.set("time", duration)
+j = 2
+for i in np.load(timestamps):
+    tli = etree.SubElement(ct, "tli")
+    tli.set("id", f"T{j}")
+    tli.set("time", f"{i:0.3f}")
+    j += 1
 
 
 đ.info("Preparing tiers")

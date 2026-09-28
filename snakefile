@@ -13,8 +13,8 @@ pixi run run
 """
 
 
-# def temp(x):
-#     return x
+def temp(x):
+    return x
 
 rule extract_audio:
     input: "data/input/{what}/CAM{num}/{num}.MP4"
@@ -52,18 +52,33 @@ rule join_videos:
         synch = rules.find_delay.output[0],
         rode  = rules.find_rode.output[0]
     output:
-        video = "data/final/{what}/{what}.MP4"
+        video = "data/final/{what}/{what}.full_res.MP4"
     script: "scripts/join_videos.py"
+
+rule shrink_video:
+    input: rules.join_videos.output.video
+    output:
+        video="data/final/{what}/{what}.mid_res.MP4"
+    shell: """ffmpeg -i {input} -vf "scale=1080:-2" {output}"""
 
 rule get_audio_from_video:
     input: rules.join_videos.output[0]
     output: "data/final/{what}/{what}.wav"
     shell: "ffmpeg -loglevel error -stats -i {input} -y {output}"
 
+
+rule do_vad:
+    input:
+        audio = rules.get_audio_from_video.output[0]
+    output:
+        timestamps = temp("data/final/{what}/{what}.timestamps.npy")
+    script:"scripts/do_vad.py"
+
 rule make_exb:
     input:
         audio = rules.get_audio_from_video.output[0],
-        video = rules.join_videos.output.video,
+        video = rules.shrink_video.output.video,
+        timestamps=rules.do_vad.output.timestamps,
         template = "data/templates/template.exb",
         schema = "data/templates/annotation_schema.xml"
     output:
@@ -74,4 +89,4 @@ rule make_exb:
 
 rule gather:
     default_target: True,
-    input: expand("data/final/{recording}/{recording}.{what}", recording = ["EP001", "EP002"], what=["wav", "MP4", "exb"])
+    input: expand("data/final/{recording}/{recording}.{what}", recording = ["EP001", "EP002"], what=["wav", "full_res.MP4", "mid_res.MP4",  "exb"])
