@@ -44,7 +44,6 @@ elif audio_source == "1":
         audio_filter = "1:a"  # camera 1 is untrimmed -> 2nd input
 else:
     raise AttributeError(f"Got illegal audio source: {audio_source}")
-
 run(
     [
         "ffmpeg",
@@ -61,13 +60,15 @@ run(
         # "-t",
         # "60",
         "-filter_complex",
-        "[0:v][1:v]hstack=inputs=2,fps=25[v]",
+        "[0:v]fps=25[v0];[1:v]fps=25[v1];[v0][v1]hstack=inputs=2[v]",
         "-map",
         "[v]",
         "-map",
         audio_filter,  # From which video audio should be taken
         "-c:v",
         "libx264",
+        "-preset",
+        "veryfast",
         "-b:v",
         "40M",
         "-c:a",
